@@ -1,3 +1,91 @@
 game_over = false
 player_health = asdj
-gvgvgv2
+gvgv
+ijhvjv2
+# A script to demonstrate two ways of calculating a factorial:
+# an iterative approach and a recursive approach.
+
+import sys
+
+# --- Iterative Factorial Calculation ---
+# This function calculates the factorial of a number using a for loop.
+def factorial_iterative(n):
+    """
+    Calculates the factorial of a non-negative integer using an iterative approach.
+
+    Args:
+        n (int): The number to calculate the factorial for. Must be non-negative.
+
+    Returns:
+        int: The factorial of n.
+
+    Raises:
+        ValueError: If n is a negative number.
+    """
+    if not isinstance(n, int):
+        raise TypeError("Input must be an integer.")
+    if n < 0:
+        raise ValueError("Factorial is not defined for negative numbers.")
+    if n == 0:
+        return 1
+
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+# --- Recursive Factorial Calculation ---
+# This function calculates the factorial of a number using recursion.
+def factorial_recursive(n):
+    """
+    Calculates the factorial of a non-negative integer using a recursive approach.
+
+    Args:
+        n (int): The number to calculate the factorial for. Must be non-negative.
+
+    Returns:
+        int: The factorial of n.
+
+    Raises:
+        ValueError: If n is a negative number.
+    """
+    if not isinstance(n, int):
+        raise TypeError("Input must be an integer.")
+    if n < 0:
+        raise ValueError("Factorial is not defined for negative numbers.")
+
+    # Base case: The factorial of 0 or 1 is 1.
+    if n == 0 or n == 1:
+        return 1
+    # Recursive step: n! = n * (n-1)!
+    else:
+        return n * factorial_recursive(n - 1)
+
+# --- Main Execution Block ---
+# This part of the script handles user input and displays the results.
+def main():
+    """
+    Main function to run the factorial calculation demo.
+    It prompts the user for a number and displays the results from both methods.
+    """
+    try:
+        user_input = input("Enter a non-negative integer to calculate its factorial: ")
+        number = int(user_input)
+
+        # Calculate using the iterative method
+        iterative_result = factorial_iterative(number)
+        print(f"Iterative factorial of {number} is: {iterative_result}")
+
+        # Calculate using the recursive method
+        recursive_result = factorial_recursive(number)
+        print(f"Recursive factorial of {number} is: {recursive_result}")
+
+    except ValueError as ve:
+        print(f"Error: {ve}")
+    except TypeError as te:
+        print(f"Error: {te}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if _name_ == "_main_":
+    main()
